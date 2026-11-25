@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Shop directory{% endblock %}{% block content %}
+<div class="page-heading"><div class="eyebrow">THE LOCAL DIRECTORY</div><h1>Shops in <span>{{ city }}</span></h1><p>Meet the businesses that make your neighbourhood.</p></div>
+<form class="filter-bar" method="get"><input name="city" value="{{ city }}" placeholder="City"><input name="q" value="{{ q }}" placeholder="Search shop or area"><select name="category"><option value="">All categories</option>{% for c in categories %}<option {% if c==category %}selected{% endif %}>{{ c }}</option>{% endfor %}</select><button class="btn primary">Search</button></form>
+<div class="shop-grid">{% for shop in shops %}<a class="shop-card" href="{{ url_for('shop_detail', shop_id=shop.id) }}"><div class="shop-banner {{ loop.index0 % 5 }}"><span>🏪</span><em>{{ shop.category }}</em></div><div class="shop-info"><h3>{{ shop.name }}</h3><p>{{ shop.description }}</p><div class="shop-meta"><span>Owner: {{ shop.owner_name }}</span><span>⌖ {{ shop.area }}</span></div></div></a>{% else %}<div class="empty">No matching shops yet. Try another category or city.</div>{% endfor %}</div>
+{% endblock %}
