@@ -1,4 +1,0 @@
-{% extends "base.html" %}{% block title %}Shopkeeper dashboard{% endblock %}{% block content %}
-<div class="dashboard-head"><div><div class="eyebrow">PARTNER WORKSPACE</div><h1>Shopkeeper dashboard</h1><p>Bring your business online with NEARBUY.</p></div><a class="btn primary" href="{{ url_for('shop_register') }}"> {{ 'Update shop' if shop else 'Register your shop' }}</a></div>
-{% if shop %}<div class="panel"><h2>{{ shop.name }}</h2><p>{{ shop.category }} · {{ shop.city }} · {{ shop.area }}</p><span class="status">{{ 'Approved and visible' if shop.approved else 'Awaiting admin approval' }}</span><p><a href="{{ url_for('manage_shop') }}">Manage products and orders →</a></p></div>{% else %}<div class="empty large-empty"><span>🏪</span><h2>Your shop's digital storefront starts here</h2><p>Register your business to add products and receive local orders.</p><a class="btn primary" href="{{ url_for('shop_register') }}">Register shop</a></div>{% endif %}
-{% endblock %}
